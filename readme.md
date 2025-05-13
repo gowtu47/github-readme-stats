@@ -465,3 +465,12 @@ Thanks! :heart:
 Contributions are welcome! &lt;3
 
 Made with :heart: and JavaScript.
+SELECT c.NAME
+FROM batch.vwGRS_reconjobdetails r
+JOIN (
+    SELECT TOP 10 * 
+    FROM batch.importstats
+) i ON r.jobname = i.Importjobname
+JOIN accountpool ap ON i.poolid = ap.id
+JOIN company c ON ap.companyid = c.id
+WHERE r.Formatter = 'EBAROnly INT (I/B-S) EBAR EQYCSCLBDT';
